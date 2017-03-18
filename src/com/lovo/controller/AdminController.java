@@ -17,7 +17,7 @@ public class AdminController {
 
     @Resource(name="adminServiceImpl")
     private AdminService adminService;
-
+//增加管理员
 /*    @RequestMapping(params = "method=add", method = RequestMethod.POST)
     public String login(AdminBean adminBean) {
 
@@ -25,7 +25,7 @@ public class AdminController {
 
         return "success";
     }*/
-
+//管理员登陆
     @RequestMapping(params = "method=login",method = RequestMethod.POST)
     public String add(AdminBean adminBean) {
 
@@ -36,7 +36,7 @@ public class AdminController {
             return "login";
         }
     }
-
+//删除管理员
 /*    @RequestMapping()
     public String change(int adminId) {
 

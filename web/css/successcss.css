@@ -1,0 +1,33 @@
+.initDiv{
+    height: 615px;background: rgba(255,255,255,0.46);border-radius: 10px;margin-top: 1%;margin-left: 2%
+}
+.titleDiv {
+    width: 860px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.66);
+    font-size: 2em;
+    margin-top: 1%;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+}
+
+dt{
+    float: left;
+    margin-bottom: 10px;
+}
+.imgDiv{
+    width: 200px;
+    height: 230px;
+    float: left;
+    border: solid 1px lightblue;
+    margin-left: 5px;
+    font-size: 2.5em;
+    color: red;
+    text-align: end;
+    line-height: 400px;
+}
+.imgDiv:hover{
+    cursor: pointer;
+}
