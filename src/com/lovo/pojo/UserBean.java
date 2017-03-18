@@ -16,23 +16,10 @@ public class UserBean {
     private BookBean book;
 //    用户日志
     private UserLog logBean;
+//    用户状态，是否被注销
+    private boolean userType=true;
+
     public UserBean() {
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public int getUserNum() {
-        return userNum;
-    }
-
-    public void setUserNum(int userNum) {
-        this.userNum = userNum;
     }
 
     public String getUserName() {
@@ -41,14 +28,6 @@ public class UserBean {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public int getUserAccount() {
-        return userAccount;
-    }
-
-    public void setUserAccount(int userAccount) {
-        this.userAccount = userAccount;
     }
 
     public BookBean getBook() {
@@ -65,5 +44,37 @@ public class UserBean {
 
     public void setLogBean(UserLog logBean) {
         this.logBean = logBean;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public Integer getUserNum() {
+        return userNum;
+    }
+
+    public void setUserNum(Integer userNum) {
+        this.userNum = userNum;
+    }
+
+    public Integer getUserAccount() {
+        return userAccount;
+    }
+
+    public void setUserAccount(Integer userAccount) {
+        this.userAccount = userAccount;
+    }
+
+    public boolean isUserType() {
+        return userType;
+    }
+
+    public void setUserType(boolean userType) {
+        this.userType = userType;
     }
 }

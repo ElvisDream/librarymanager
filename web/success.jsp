@@ -31,8 +31,48 @@
                 <span class="userInfo" id="userAccount"></span><br/>
                 <span class="userInfo">用户状态:</span>
                 <span class="userInfo" id="userType"></span><br/>
-                <span class="userInfo">已借书籍:</span>
-                <span class="userInfo" id="books"></span><br/>
+                <div style="width: 300px;height: 80px">
+                    <span class="userInfo">已借书籍:</span>
+                    <span class="userInfo" id="books"></span><br/>
+                </div>
+
+                <div style="width: 310px;border: solid 0.5px rgba(255,255,255,0.4);"></div>
+                <%--分割线--%>
+
+                <%--管理员界面--%>
+                <div id="managerDiv" style="height: 240px;width: 300px;border: solid 1px white;border-radius: 10px;margin-left: 1%;margin-top: 2%;display: block;">
+                    <div style="margin-top: 7%;margin-left: 2%">
+                        <span class="userInfo">管理员姓名:</span>
+                        <span class="userInfo" id="adminName"></span><br/>
+                    </div>
+                    <div style="margin-top: 5%;margin-left: 2%">
+                        <span class="userInfo">管理员权限:</span>
+                        <span class="userInfo" id="adminPower"></span><br/>
+                    </div>
+                    <div style="margin-top: 5%;margin-left: 2%;width: 280px;height: 100px;">
+                        <span class="userInfo">用户已借书籍:</span>
+                    </div>
+                    <button id="rentBtn" class="btn btn-primary btn-sm" style="margin-left: 10%">借 阅</button>
+                    <button id="clearBtn" class="btn btn-primary btn-sm" style="margin-left: 5%">清 空</button>
+                    <button id="adminTypeBtn" class="btn btn-primary btn-sm" style="margin-left: 5%">管理员状态</button>
+                </div>
+                <%--修改管理员状态界面--%>
+                <div id="changeManagerDiv" style="height: 240px;width: 300px;border: solid 1px white;border-radius: 10px;margin-left: 1%;margin-top: 2%;display: none;">
+                    <div style="height: 200px;width: 300px;">
+                        <span class="userInfo" style="margin-left: 30%">普通管理员列表</span>
+                        <div style="width: 298px;border: solid 0.5px rgba(255,255,255,0.4);"></div>
+                        <%--分割线--%>
+                    </div>
+                    <button id="sureChgBtn" class="btn btn-primary btn-sm" style="margin-left: 19%">确认修改</button>
+                    <button id="cancleChgBtn" class="btn btn-primary btn-sm" style="margin-left: 10%">取消修改</button>
+                </div>
+                <button class="btn btn-danger" id="addUserBtn" style="width: 300px;margin-top: 4%">添加用户</button>
+                <div id="addUserDiv" style="margin-top: 2%;margin-left: 1%; width: 300px;height: 100px;border: solid 1px white;border-radius: 10px;display: none;">
+                    <input type="text" name="userName" style="width: 260px;border-radius: 5px;margin-top: 3%;margin-left: 3%" placeholder="用户真实姓名">
+                    <input type="text" name="userAccount" style="width: 260px;border-radius: 5px;margin-left: 3%" placeholder="用户充值">
+                    <input type="button" id="sureBtn" style="margin-left: 55%" class="btn btn-success btn-sm" value="确定"/>
+                    <input type="button" id="cancleBtn" class="btn btn-success btn-sm" value="取消"/>
+                </div>
             </div>
 
             <%--右边内容--%>
@@ -80,7 +120,7 @@
                         </div>
                     </dt>
                 </dl>
-                <div id="errorMsg" style="width: 500px;color: red;display: none;font-size: 1.5em;margin-left: 5%">对不起，您一次最多只能借走4本书!</div>
+                <div id="errorMsg" style="width: 500px;color: red;display: none;font-size: 1.5em;margin-left: 5%">用户一次最多只能借走4本书!</div>
             </div>
         </div>
     </div>

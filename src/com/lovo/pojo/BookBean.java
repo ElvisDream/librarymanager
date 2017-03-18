@@ -9,16 +9,9 @@ public class BookBean {
     private Integer bookId;
 //    书籍名称
     private String bookName;
-
+//    书籍是否被借走
+    private boolean bookType=true;
     public BookBean() {
-    }
-
-    public int getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
     }
 
     public String getBookName() {
@@ -27,5 +20,21 @@ public class BookBean {
 
     public void setBookName(String bookName) {
         this.bookName = bookName;
+    }
+
+    public Integer getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(Integer bookId) {
+        this.bookId = bookId;
+    }
+
+    public boolean getBookType() {
+        return bookType;
+    }
+
+    public void setBookType(boolean bookType) {
+        this.bookType = bookType;
     }
 }

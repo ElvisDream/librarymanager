@@ -14,9 +14,24 @@ $(function () {
                 num++;
                 $(this).text("√");
             }else{
-
                 $("#errorMsg").show(500);
             }
         }
+    });
+
+    $("#addUserBtn").click(function () {
+        $("#addUserDiv").show();
+    });
+    $("#cancleBtn").click(function () {
+        $("#addUserDiv").hide();
+    });
+
+    $("#adminTypeBtn").click(function () {
+        $("#managerDiv").hide()
+        $("#changeManagerDiv").show()
+    });
+    $("#cancleChgBtn").click(function () {
+        $("#managerDiv").show()
+        $("#changeManagerDiv").hide()
     });
 });

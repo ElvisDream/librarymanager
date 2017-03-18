@@ -14,6 +14,22 @@
         </sourceRoots>
       </configuration>
     </facet>
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="web application context" name="MVC application context" removed="true">
+          <file>file://$MODULE_DIR$/web/applicationContext.xml</file>
+        </fileset>
+        <fileset id="web myspring servlet context" name="MVC myspring servlet context" removed="true">
+          <file>file://$MODULE_DIR$/web/mySpring-servlet.xml</file>
+        </fileset>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/web/WEB-INF/classes/classes/applicationContext.xml</file>
+          <file>file://$MODULE_DIR$/src/applicationContext.xml</file>
+          <file>file://$MODULE_DIR$/src/mySpring-servlet.xml</file>
+          <file>file://$MODULE_DIR$/web/WEB-INF/classes/classes/mySpring-servlet.xml</file>
+        </fileset>
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
