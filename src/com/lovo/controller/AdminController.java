@@ -5,8 +5,10 @@ import com.lovo.service.AdminService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by Elivs on 2017/3/17.
@@ -19,7 +21,7 @@ public class AdminController {
     private AdminService adminService;
 //增加管理员
 /*    @RequestMapping(params = "method=add", method = RequestMethod.POST)
-    public String login(AdminBean adminBean) {
+    public String add(AdminBean adminBean) {
 
         adminService.addAdmin(adminBean);
 
@@ -27,15 +29,25 @@ public class AdminController {
     }*/
 //管理员登陆
     @RequestMapping(params = "method=login",method = RequestMethod.POST)
-    public String add(AdminBean adminBean) {
+    public String login(AdminBean adminBean, HttpSession session) {
 
-        boolean flag = adminService.queryAdmin(adminBean);
-        if(flag) {
+        AdminBean admin = adminService.queryAdmin(adminBean);
+        session.setAttribute("admin",admin);
+        if(admin != null) {
             return "redirect:success.jsp";//使用重定向防止表单重复提交
         }else{
             return "login";
         }
     }
+//    查询管理员信息
+    @RequestMapping(method = RequestMethod.POST)
+    public @ResponseBody AdminBean query(HttpSession session) {
+
+        AdminBean admin = (AdminBean) session.getAttribute("admin");
+
+        return admin;
+    }
+
 //删除管理员
 /*    @RequestMapping()
     public String change(int adminId) {

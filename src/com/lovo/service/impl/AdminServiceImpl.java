@@ -20,9 +20,9 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public boolean queryAdmin(AdminBean adminBean) {
+    public AdminBean queryAdmin(AdminBean adminBean) {
 
-        return adminDao.selectAdmin(adminBean)!=null;
+        return adminDao.selectAdmin(adminBean);
     }
 
     @Override

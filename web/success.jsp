@@ -21,10 +21,11 @@
         <div class="row">
             <%--左边内容--%>
             <div class="col-md-3 initDiv">
-                <input type="text" placeholder="请输入用户ID" style="margin-top: 4%"/>
-                <button class="btn btn-success btn-sm">查询</button><br/>
+                <input type="text" id="userId" placeholder="请输入用户ID" style="margin-top: 4%"/>
+                <button id="userQuery" class="btn btn-success btn-sm">查询</button>
+                <button id="delUser" class="btn btn-success btn-sm" style="margin-left: 2%">注销</button><br/>
                 <span class="userInfo">用户ID:</span>
-                <span class="userInfo" id="userId"></span><br/>
+                <span class="userInfo" id="getUserId"></span><br/>
                 <span class="userInfo">用户名:</span>
                 <span class="userInfo" id="userName"></span><br/>
                 <span class="userInfo">用户余额:</span>
