@@ -15,13 +15,22 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/successcss.css">
     <script type="text/javascript">
+        var num=0;
         $(function () {
            $(".imgDiv").click(function () {
                if($(this).text()=="√") {
+                   num--
                    $(this).text("");
+                   $("#errorMsg").hide(500);
                }else{
 //                   alert($(this).find("input").val())//获取书籍名称
-                   $(this).text("√");
+                   if(num < 4) {
+                       num++;
+                       $(this).text("√");
+                   }else{
+
+                        $("#errorMsg").show(500);
+                   }
                }
            });
         });
@@ -30,7 +39,10 @@
 <body style="background: url('image/backimg.jpg') round no-repeat;">
     <div class="container-fluid" style="background: rgba(0,0,0,0.53);height: 638px">
         <div class="row">
-            <div class="col-md-3 initDiv"></div>
+            <%--左边内容--%>
+            <div class="col-md-3 initDiv">
+            </div>
+            <%--右边内容--%>
             <div class="col-md-8 initDiv" style="background: white">
                 <div class="titleDiv">书 籍 一 览</div>
                 <dl style="margin-top: 3%;margin-left: 2%">
@@ -75,6 +87,7 @@
                         </div>
                     </dt>
                 </dl>
+                <div id="errorMsg" style="width: 500px;color: red;display: none;font-size: 1.5em;margin-left: 5%">对不起，您一次最多只能借走4本书!</div>
             </div>
         </div>
     </div>
