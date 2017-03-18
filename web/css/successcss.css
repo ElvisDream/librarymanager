@@ -19,7 +19,7 @@ dt{
 }
 .imgDiv{
     width: 200px;
-    height: 230px;
+    height: 220px;
     float: left;
     border: solid 1px lightblue;
     margin-left: 5px;
@@ -30,4 +30,8 @@ dt{
 }
 .imgDiv:hover{
     cursor: pointer;
+}
+.userInfo{
+    font-size: 1.5em;
+    color: white;
 }

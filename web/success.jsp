@@ -11,37 +11,30 @@
     <title>Title</title>
     <script type="text/javascript" src="js/jquery-1.11.2-min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/successcss.css">
-    <script type="text/javascript">
-        var num=0;
-        $(function () {
-           $(".imgDiv").click(function () {
-               if($(this).text()=="√") {
-                   num--
-                   $(this).text("");
-                   $("#errorMsg").hide(500);
-               }else{
-//                   alert($(this).find("input").val())//获取书籍名称
-                   if(num < 4) {
-                       num++;
-                       $(this).text("√");
-                   }else{
 
-                        $("#errorMsg").show(500);
-                   }
-               }
-           });
-        });
-    </script>
+    <link rel="stylesheet" href="css/successcss.css">
+    <script type="text/javascript" src="js/successjs.js"></script>
 </head>
 <body style="background: url('image/backimg.jpg') round no-repeat;">
     <div class="container-fluid" style="background: rgba(0,0,0,0.53);height: 638px">
         <div class="row">
             <%--左边内容--%>
             <div class="col-md-3 initDiv">
+                <input type="text" placeholder="请输入用户ID" style="margin-top: 4%"/>
+                <button class="btn btn-success btn-sm">查询</button><br/>
+                <span class="userInfo">用户ID:</span>
+                <span class="userInfo" id="userId"></span><br/>
+                <span class="userInfo">用户名:</span>
+                <span class="userInfo" id="userName"></span><br/>
+                <span class="userInfo">用户余额:</span>
+                <span class="userInfo" id="userAccount"></span><br/>
+                <span class="userInfo">用户状态:</span>
+                <span class="userInfo" id="userType"></span><br/>
+                <span class="userInfo">已借书籍:</span>
+                <span class="userInfo" id="books"></span><br/>
             </div>
+
             <%--右边内容--%>
             <div class="col-md-8 initDiv" style="background: white">
                 <div class="titleDiv">书 籍 一 览</div>
@@ -52,8 +45,8 @@
                         </div>
                     </dt>
                     <dt>
-                        <div class="imgDiv" style="background: url('image/genius.jpg') no-repeat">
-                            <input type="hidden" value="天才在左 疯子在右">
+                        <div class="imgDiv" style="background: url('image/zfzdr.jpg') no-repeat">
+                            <input type="hidden" value="追风筝的人">
                         </div>
                     </dt>
                     <dt>
@@ -67,8 +60,8 @@
                         </div>
                     </dt>
                     <dt>
-                        <div class="imgDiv" style="background: url('image/pingfandeshijie.jpg') no-repeat">
-                            <input type="hidden" value="平凡的世界">
+                        <div class="imgDiv" style="background: url('image/jyzhd.jpg') no-repeat">
+                            <input type="hidden" value="解忧杂货店">
                         </div>
                     </dt>
                     <dt>
