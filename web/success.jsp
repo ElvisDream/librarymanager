@@ -41,16 +41,15 @@
 
                 <%--管理员界面--%>
                 <div id="managerDiv" style="height: 240px;width: 300px;border: solid 1px white;border-radius: 10px;margin-left: 1%;margin-top: 2%;display: block;">
-                    <div style="margin-top: 7%;margin-left: 2%">
-                        <span class="userInfo">管理员姓名:</span>
-                        <span class="userInfo" id="adminName"></span><br/>
-                    </div>
-                    <div style="margin-top: 5%;margin-left: 2%">
-                        <span class="userInfo">管理员权限:</span>
-                        <span class="userInfo" id="adminPower"></span><br/>
-                    </div>
-                    <div style="margin-top: 5%;margin-left: 2%;width: 280px;height: 100px;">
-                        <span class="userInfo">用户已借书籍:</span>
+                    <div style="margin-top: 5%;margin-left: 2%;width: 280px;height: 180px;">
+                        <div style="margin-top: 7%;margin-left: 2%">
+                            <span class="userInfo">管理员姓名:</span>
+                            <span class="userInfo" id="adminName"></span><br/>
+                        </div>
+                        <div style="margin-top: 5%;margin-left: 2%">
+                            <span class="userInfo">管理员权限:</span>
+                            <span class="userInfo" id="adminPower"></span><br/>
+                        </div>
                     </div>
                     <button id="rentBtn" class="btn btn-primary btn-sm" style="margin-left: 10%">借 阅</button>
                     <button id="clearBtn" class="btn btn-primary btn-sm" style="margin-left: 5%">清 空</button>

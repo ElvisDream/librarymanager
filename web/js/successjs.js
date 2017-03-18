@@ -9,7 +9,7 @@ $(function () {
             $(this).text("");
             $("#errorMsg").hide(500);
         }else{
-//                   alert($(this).find("input").val())//获取书籍名称
+            // alert($(this).find("input").val())//获取书籍名称
             if(num < 4) {
                 num++;
                 $(this).text("√");
