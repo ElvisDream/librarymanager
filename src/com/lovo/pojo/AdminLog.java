@@ -1,9 +1,11 @@
 package com.lovo.pojo;
 
+import java.io.Serializable;
+
 /**
  * Created by Elivs on 2017/3/17.
  */
-public class AdminLog {
+public class AdminLog implements Serializable {
 
 //    管理员日志ID
     private Integer adminLogId;

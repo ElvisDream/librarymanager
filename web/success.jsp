@@ -32,11 +32,8 @@
                 <span class="userInfo" id="userAccount"></span><br/>
                 <span class="userInfo">用户状态:</span>
                 <span class="userInfo" id="userType"></span><br/>
-                <div style="width: 300px;height: 80px">
-                    <span class="userInfo">已借书籍:</span>
-                    <span class="userInfo" id="books"></span><br/>
-                </div>
-
+                    <%--<span class="userInfo">已借书籍:</span>--%>
+                <button class="btn btn-success" id="bookChk" style="margin-left: 70%">已借书籍</button>
                 <div style="width: 310px;border: solid 0.5px rgba(255,255,255,0.4);"></div>
                 <%--分割线--%>
 

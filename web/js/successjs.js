@@ -3,8 +3,8 @@
  */
 var num=0;
 $(function () {
-    
     function adminInfo() {
+
         $.ajax({
             dataType:"json",
             type:"post",
@@ -13,6 +13,9 @@ $(function () {
             success:function (result) {
                 $("#adminName").text(result.adminName)
                 $("#adminPower").text(result.adminPower)
+                if(result.adminPower != "super") {
+                    $("#adminTypeBtn").hide();
+                }
             }
         });
     }

@@ -22,15 +22,13 @@ public class UserDaoImpl implements UserDao {
     @Override
     public UserBean selectUserByNum(int userNum) {
 
-        String sql = "SELECT * from users LEFT JOIN book ON book.user_id = users.user_id where user_num=?";
+        String sql = "SELECT * from users where user_num = ?";
 
         UserBean user = null;
 
         try {
             RowMapper<UserBean> mapper = new BeanPropertyRowMapper<UserBean>(UserBean.class);
             user = jdbcTemplate.queryForObject(sql, mapper, userNum);
-            BookBean book = new BookBean();
-
             return user;
         } catch (Exception e) {
             return null;

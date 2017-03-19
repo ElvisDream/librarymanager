@@ -1,9 +1,11 @@
 package com.lovo.pojo;
 
+import java.io.Serializable;
+
 /**
  * Created by Elivs on 2017/3/17.
  */
-public class UserBean {
+public class UserBean implements Serializable {
 //    用户ID
     private Integer userId;
 //    会员账号

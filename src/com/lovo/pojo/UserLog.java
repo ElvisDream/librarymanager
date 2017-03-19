@@ -1,9 +1,11 @@
 package com.lovo.pojo;
 
+import java.io.Serializable;
+
 /**
  * Created by Elivs on 2017/3/17.
  */
-public class UserLog {
+public class UserLog implements Serializable {
 //    用户日志ID
     private Integer userLogId;
 //    用户日志记录

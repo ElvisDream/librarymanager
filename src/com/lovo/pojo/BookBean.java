@@ -1,9 +1,11 @@
 package com.lovo.pojo;
 
+import java.io.Serializable;
+
 /**
  * Created by Elivs on 2017/3/17.
  */
-public class BookBean {
+public class BookBean implements Serializable {
 
 //    书籍ID
     private Integer bookId;
@@ -11,6 +13,8 @@ public class BookBean {
     private String bookName;
 //    书籍是否被借走
     private boolean bookType=true;
+//    图片
+    private String bookImg;
     public BookBean() {
     }
 
@@ -36,5 +40,13 @@ public class BookBean {
 
     public void setBookType(boolean bookType) {
         this.bookType = bookType;
+    }
+
+    public String getBookImg() {
+        return bookImg;
+    }
+
+    public void setBookImg(String bookImg) {
+        this.bookImg = bookImg;
     }
 }
