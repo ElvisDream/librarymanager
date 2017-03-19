@@ -16,6 +16,7 @@
             var adminName = $("#adminName").val();
             var adminPwd = $("#adminPwd").val();
             if(adminName == "" || adminPwd == "") {
+                $("#errorMsg").text("用户名或密码不能为空！");
                 $("#errorMsg").fadeIn(1000)
                 $("#errorMsg").fadeOut(1000)
                 return false;
@@ -39,7 +40,7 @@
                         <input type="text" id="adminName" name="adminName" style="margin-left: 40%;border-radius:2px" placeholder="账户"/>
                         <input type="password" id="adminPwd" style="border-radius: 2px" name="adminPwd" placeholder="密码"/>
                         <input type="submit" class="btn btn-success btn-sm" value="登陆"/>
-                        <span style="color:red;font-size: 1.2em;margin-left: 1%;display: none" id="errorMsg">用户名或密码不能为空</span>
+                        <span style="color:red;font-size: 1.2em;margin-left: 1%;" id="errorMsg">${errorMsg}</span>
                     </form>
                 </div>
             </div>

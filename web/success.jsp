@@ -26,17 +26,16 @@
                 <button id="delUser" class="btn btn-success btn-sm" style="margin-left: 2%">注销</button><br/>
                 <span class="userInfo">用户ID:</span>
                 <span class="userInfo" id="getUserId"></span><br/>
-                <span class="userInfo">用户名:</span>
+                <span class="userInfo">用户姓名:</span>
                 <span class="userInfo" id="userName"></span><br/>
                 <span class="userInfo">用户余额:</span>
                 <span class="userInfo" id="userAccount"></span><br/>
                 <span class="userInfo">用户状态:</span>
                 <span class="userInfo" id="userType"></span><br/>
-                    <%--<span class="userInfo">已借书籍:</span>--%>
-                <button class="btn btn-success" id="bookChk" style="margin-left: 70%">已借书籍</button>
-                <div style="width: 310px;border: solid 0.5px rgba(255,255,255,0.4);"></div>
+                <button class="btn btn-success btn-sm" id="bookChk" style="margin-left: 30%">已借书籍</button>
+                <button id="rebackBookList" class="btn btn-danger btn-sm" style="margin-left: 5%">返回书籍列表</button>
+                <div style="width: 310px;border: solid 0.5px rgba(255,255,255,0.4);margin-top: 5%"></div>
                 <%--分割线--%>
-
                 <%--管理员界面--%>
                 <div id="managerDiv" style="height: 240px;width: 300px;border: solid 1px white;border-radius: 10px;margin-left: 1%;margin-top: 2%;display: block;">
                     <div style="margin-top: 5%;margin-left: 2%;width: 280px;height: 180px;">
@@ -50,7 +49,7 @@
                         </div>
                     </div>
                     <button id="rentBtn" class="btn btn-primary btn-sm" style="margin-left: 10%">借 阅</button>
-                    <button id="clearBtn" class="btn btn-primary btn-sm" style="margin-left: 5%">清 空</button>
+                    <button id="clearBtn" class="btn btn-danger btn-sm" style="margin-left: 5%">清 空</button>
                     <button id="adminTypeBtn" class="btn btn-primary btn-sm" style="margin-left: 5%">管理员状态</button>
                 </div>
                 <%--修改管理员状态界面--%>
@@ -60,13 +59,28 @@
                         <div style="width: 298px;border: solid 0.5px rgba(255,255,255,0.4);"></div>
                         <%--分割线--%>
                     </div>
-                    <button id="sureChgBtn" class="btn btn-primary btn-sm" style="margin-left: 19%">确认修改</button>
-                    <button id="cancleChgBtn" class="btn btn-primary btn-sm" style="margin-left: 10%">取消修改</button>
+                    <button id="addAdminBtn" class="btn btn-primary btn-sm" style="margin-left: 6%">增加管理员</button>
+                    <button id="sureChgBtn" class="btn btn-primary btn-sm" style="margin-left: 2%">确认修改</button>
+                    <button id="cancleChgBtn" class="btn btn-danger btn-sm" style="margin-left: 2%">取消修改</button>
                 </div>
+
+                <div id="addAdminDiv" style="height: 240px;width: 300px;border: solid 1px white;border-radius: 10px;margin-left: 1%;margin-top: 2%;display: none;">
+                    <span class="userInfo" style="margin-left: 30%">添加管理员</span>
+                    <div style="width: 298px;border: solid 0.5px rgba(255,255,255,0.4);"></div>
+                    <form action="">
+                        <div style="height: 170px;width: 300px;">
+                        <input type="text" name="adminName" style="margin-left: 15%;margin-top: 17%" placeholder="登陆账号"/>
+                        <input type="password" name="adminPwd" style="margin-left: 15%;margin-top: 5%" placeholder="密码"/>
+                        </div>
+                        <input type="submit" class="btn btn-primary btn-sm" style="margin-left: 15%" value="添加">
+                        <input type="button" class="btn btn-danger btn-sm" style="margin-left: 10%" id="rebackBtn" value="返回上一级">
+                    </form>
+                </div>
+
                 <button class="btn btn-danger" id="addUserBtn" style="width: 300px;margin-top: 4%">添加用户</button>
                 <div id="addUserDiv" style="margin-top: 2%;margin-left: 1%; width: 300px;height: 100px;border: solid 1px white;border-radius: 10px;display: none;">
-                    <input type="text" name="userName" style="width: 260px;border-radius: 5px;margin-top: 3%;margin-left: 3%" placeholder="用户真实姓名">
-                    <input type="text" name="userAccount" style="width: 260px;border-radius: 5px;margin-left: 3%" placeholder="用户充值">
+                    <input type="text" id="userRealName" style="width: 260px;border-radius: 5px;margin-top: 3%;margin-left: 3%" placeholder="用户真实姓名">
+                    <input type="text" id="userMoney" style="width: 260px;border-radius: 5px;margin-left: 3%" placeholder="用户充值">
                     <input type="button" id="sureBtn" style="margin-left: 55%" class="btn btn-success btn-sm" value="确定"/>
                     <input type="button" id="cancleBtn" class="btn btn-success btn-sm" value="取消"/>
                 </div>
@@ -75,49 +89,8 @@
             <%--右边内容--%>
             <div class="col-md-8 initDiv" style="background: white">
                 <div class="titleDiv">书 籍 一 览</div>
-                <dl style="margin-top: 3%;margin-left: 2%">
-                    <dt>
-                        <div class="imgDiv" style="background: url('image/cndqsjzg.jpg') no-repeat">
-                            <input type="hidden" value="从你的全世界路过">
-                        </div>
-                    </dt>
-                    <dt>
-                        <div class="imgDiv" style="background: url('image/zfzdr.jpg') no-repeat">
-                            <input type="hidden" value="追风筝的人">
-                        </div>
-                    </dt>
-                    <dt>
-                        <div class="imgDiv" style="background: url('image/jianglaideni.jpg') no-repeat">
-                            <input type="hidden" value="将来的你">
-                        </div>
-                    </dt>
-                    <dt>
-                        <div class="imgDiv" style="background: url('image/baiduren.jpg') no-repeat">
-                            <input type="hidden" value="摆渡人">
-                        </div>
-                    </dt>
-                    <dt>
-                        <div class="imgDiv" style="background: url('image/jyzhd.jpg') no-repeat">
-                            <input type="hidden" value="解忧杂货店">
-                        </div>
-                    </dt>
-                    <dt>
-                        <div class="imgDiv" style="background: url('image/yangpijuan.jpg') no-repeat">
-                            <input type="hidden" value="羊皮卷">
-                        </div>
-                    </dt>
-                    <dt>
-                        <div class="imgDiv" style="background: url('image/guoyisheng.jpg') no-repeat">
-                            <input type="hidden" value="按自己的意愿过一生">
-                        </div>
-                    </dt>
-                    <dt>
-                        <div class="imgDiv" style="background: url('image/qingnianwenzhai.jpg') no-repeat">
-                            <input type="hidden" value="青年文摘">
-                        </div>
-                    </dt>
-                </dl>
-                <div id="errorMsg" style="width: 500px;color: red;display: none;font-size: 1.5em;margin-left: 5%">用户一次最多只能借走4本书!</div>
+                <dl style="margin-top: 3%;margin-left: 2%" id="bookImgDl"></dl>
+                <div id="errorMsg" style="width: 500px;color: red;display: none;font-size: 1.5em;margin-left: 5%;clear: both;">用户一次最多只能借走4本书!</div>
             </div>
         </div>
     </div>

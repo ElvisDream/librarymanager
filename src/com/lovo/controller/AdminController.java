@@ -32,11 +32,12 @@ public class AdminController {
     public String login(AdminBean adminBean, HttpSession session) {
 
         AdminBean admin = adminService.queryAdmin(adminBean);
-        session.setAttribute("admin",admin);
         if(admin != null) {
+            session.setAttribute("admin",admin);
             return "redirect:success.jsp";//使用重定向防止表单重复提交
         }else{
-            return "login";
+            session.setAttribute("errorMsg","账户或密码错误！");
+            return "redirect:login.jsp";
         }
     }
 //    查询管理员信息

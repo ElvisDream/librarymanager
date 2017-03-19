@@ -17,6 +17,13 @@ public interface UserServce {
      *
      * @param userNum 根据用户账户删除用户
      */
-    void delUserByNum(int userNum);
+    UserBean delUserByNum(int userNum);
+
+    /**
+     *
+     * @param user 新增用户对象
+     * @return 返回新增用户对象
+     */
+    UserBean addUser(UserBean user);
 
 }

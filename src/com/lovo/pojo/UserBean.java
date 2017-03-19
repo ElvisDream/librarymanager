@@ -72,7 +72,7 @@ public class UserBean implements Serializable {
         this.userAccount = userAccount;
     }
 
-    public boolean isUserType() {
+    public boolean getUserType() {
         return userType;
     }
 

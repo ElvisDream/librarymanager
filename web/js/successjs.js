@@ -20,22 +20,6 @@ $(function () {
         });
     }
     adminInfo();
-    
-    $(".imgDiv").click(function () {
-        if($(this).text()=="√") {
-            num--
-            $(this).text("");
-            $("#errorMsg").hide(500);
-        }else{
-            // alert($(this).find("input").val())//获取书籍名称
-            if(num < 4) {
-                num++;
-                $(this).text("√");
-            }else{
-                $("#errorMsg").show(500);
-            }
-        }
-    });
 
     $("#addUserBtn").click(function () {
         $("#addUserDiv").show();
@@ -52,20 +36,48 @@ $(function () {
         $("#managerDiv").show()
         $("#changeManagerDiv").hide()
     });
-    userId = "";
     $("#userQuery").click(function () {
-        userId = $("#userId").val();
-        query(userId);
+
+        if($("#userId").val()!="") {
+            query($("#userId").val(),"query");
+        }else{
+            alert("请先查询一个用户")
+        }
     });
-    function query(userId) {
+    $("#delUser").click(function () {
+        if($("#userId").val()!="") {
+            query($("#userId").val(),"del")
+        }else{
+            alert("请先查询一个用户")
+        }
+    });
+    $("#sureBtn").click(function () {
+        if($("#userRealName").val()!="" || $("#userMoney").val() != "") {
+            query("","add")
+        }else{
+            alert("请先完善用户信息")
+        }
+    });
+    $("#bookChk").click(function () {
+        if($("#userId").val()!="") {
+            showBooks("userBook");
+        }else{
+            alert("请先查询一个用户!")
+        }
+    });
+
+    $("#rebackBookList").click(function () {
+        showBooks("");
+    });
+    function query(userId,method) {
         $.ajax({
             dataType:"json",
-            url:"user.do",
+            url:"user.do?method="+method,
             type:'post',
-            data:{userId:userId},
+            data:{userId:userId,userName:$("#userRealName").val(),userAccount:$("#userMoney").val()},
             success:function (result) {
                 //此处开始写获取用户信息
-                $("#getUserId").text(result.userId);
+                $("#getUserId").text(result.userNum);
                 $("#userName").text(result.userName);
                 $("#userAccount").text(result.userAccount+"元");
                 var userType = result.userType;
@@ -77,4 +89,53 @@ $(function () {
             }
         })
     }
+    $("#addAdminBtn").click(function () {
+        $("#changeManagerDiv").hide();
+        $("#addAdminDiv").show();
+    });
+    $("#rebackBtn").click(function () {
+        $("#addAdminDiv").hide();
+        $("#changeManagerDiv").show();
+    });
+
+
+    function showBooks(bookMethod) {
+        $.ajax({
+            dataType:"json",
+            type:"post",
+            url:"book.do?method="+bookMethod,
+            data:{userNum:$("#userId").val()},
+            success:function (result) {
+                $("#bookImgDl").html("");
+                for(var i=0; i<result.length;i++) {
+                    var $dt = $("<dt></dt>");
+                    // style='background: url('"+result[i].bookImg+"')'
+                    $dt.append("<div class='imgDiv' style=\"background: url('/image/"+ result[i].bookImg+"')\">");
+                    $dt.append('<input type="hidden" value="'+result[i].bookName+'">');
+                    $("#bookImgDl").append($dt);
+                }
+                $(".imgDiv").click(function () {
+                    if($(this).text()=="√") {
+                        num--
+                        $(this).text("");
+                        $("#errorMsg").hide();
+                    }else{
+                        // alert($(this).find("input").val())//获取书籍名称
+                        if(num < 4) {
+                            num++;
+                            $(this).text("√");
+                        }else{
+                            $("#errorMsg").show();
+                        }
+                    }
+                });
+                $("#clearBtn").click(function () {
+                    num=0;
+                    $("#errorMsg").hide();
+                    $(".imgDiv").text("");
+                });
+            }
+        });
+    }
+    showBooks()
 });

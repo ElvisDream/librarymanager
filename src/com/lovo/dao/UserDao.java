@@ -17,6 +17,12 @@ public interface UserDao {
      *
      * @param userNum 根据用户账户修改用户信息
      */
-    void updateUserByNum(int userNum);
+    UserBean updateUserByNum(int userNum);
 
+    /**
+     *
+     * @param user 新用户
+     * @return 返回新增用户对象
+     */
+    UserBean addUser(UserBean user);
 }

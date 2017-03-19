@@ -36,8 +36,35 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void updateUserByNum(int userNum) {
+    public UserBean updateUserByNum(int userNum) {
         String sql = "UPDATE users SET user_type=FALSE WHERE user_num=?";
         jdbcTemplate.update(sql, new Object[]{userNum});
+        String sql1 = "SELECT * from users where user_num = ?";
+        UserBean user = null;
+        try {
+            RowMapper<UserBean> mapper = new BeanPropertyRowMapper<UserBean>(UserBean.class);
+            user = jdbcTemplate.queryForObject(sql1, mapper, userNum);
+            return user;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    @Override
+    public UserBean addUser(UserBean user) {
+
+        String sql = "INSERT INTO users VALUES (DEFAULT ,?,?,?,?)";
+
+        jdbcTemplate.update(sql, new Object[]{user.getUserNum(), user.getUserName(), user.getUserAccount(), user.getUserType()});
+
+        UserBean newUser = null;
+        String sql1 = "select * from users where user_name=?";
+        try {
+            RowMapper<UserBean> mapper = new BeanPropertyRowMapper<UserBean>(UserBean.class);
+            newUser = jdbcTemplate.queryForObject(sql1,mapper, user.getUserName());
+            return newUser;
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
