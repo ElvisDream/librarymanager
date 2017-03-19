@@ -4,12 +4,10 @@
 var num=0;
 $(function () {
     function adminInfo() {
-
         $.ajax({
             dataType:"json",
             type:"post",
             url:"admin.do",
-            // data:{method:query},
             success:function (result) {
                 $("#adminName").text(result.adminName)
                 $("#adminPower").text(result.adminPower)
@@ -31,6 +29,7 @@ $(function () {
     $("#adminTypeBtn").click(function () {
         $("#managerDiv").hide()
         $("#changeManagerDiv").show()
+        getUser("getAll");
     });
     $("#cancleChgBtn").click(function () {
         $("#managerDiv").show()
@@ -109,7 +108,6 @@ $(function () {
                 $("#bookImgDl").html("");
                 for(var i=0; i<result.length;i++) {
                     var $dt = $("<dt></dt>");
-                    // style='background: url('"+result[i].bookImg+"')'
                     $dt.append("<div class='imgDiv' style=\"background: url('/image/"+ result[i].bookImg+"')\">");
                     $dt.append('<input type="hidden" value="'+result[i].bookName+'">');
                     $("#bookImgDl").append($dt);
@@ -120,7 +118,6 @@ $(function () {
                         $(this).text("");
                         $("#errorMsg").hide();
                     }else{
-                        // alert($(this).find("input").val())//获取书籍名称
                         if(num < 4) {
                             num++;
                             $(this).text("√");
@@ -138,4 +135,29 @@ $(function () {
         });
     }
     showBooks()
+    function getUser(method,adminId) {
+        $.ajax({
+            dataType:"json",
+            type:"post",
+            url:"admin.do?method="+method,
+            data:{adminId:adminId},
+            success:function (result) {
+                $("#adminDl").html("");
+                for(var i=0;i<result.length;i++) {
+                    $dd=$("<dd style='margin-top: 3%;'></dd>");
+                    $dd.append("<button class='btn btn-danger btn-sm removeAdmin' style='margin-right: 10%'>删除</button>")
+                    $dd.append('<input type="hidden" value="'+result[i].adminId+'">');
+                    $dd.append("<span >"+result[i].adminName+"</span>");
+                    $("#adminDl").append($dd);
+                }
+                $(".removeAdmin").click(function () {
+                    adminId = $(this).next().val();
+                    delAdmin(adminId);
+                });
+            }
+        });
+    };
+    function delAdmin(adminId) {
+        getUser("remove", adminId);
+    }
 });

@@ -58,22 +58,27 @@
                         <span class="userInfo" style="margin-left: 30%">普通管理员列表</span>
                         <div style="width: 298px;border: solid 0.5px rgba(255,255,255,0.4);"></div>
                         <%--分割线--%>
+                        <div style="width: 250px; height: 150px;margin-left: 5%">
+                            <dl id="adminDl" style="color: white;font-size: 1.2em"></dl>
+                        </div>
                     </div>
-                    <button id="addAdminBtn" class="btn btn-primary btn-sm" style="margin-left: 6%">增加管理员</button>
-                    <button id="sureChgBtn" class="btn btn-primary btn-sm" style="margin-left: 2%">确认修改</button>
-                    <button id="cancleChgBtn" class="btn btn-danger btn-sm" style="margin-left: 2%">取消修改</button>
+                    <button id="addAdminBtn" class="btn btn-primary btn-sm" style="margin-left: 15%">增加管理员</button>
+                    <%--<button id="sureChgBtn" class="btn btn-primary btn-sm" style="margin-left: 2%">确认修改</button>--%>
+                    <button id="cancleChgBtn" class="btn btn-danger btn-sm" style="margin-left: 5%">返回上级</button>
+
                 </div>
 
                 <div id="addAdminDiv" style="height: 240px;width: 300px;border: solid 1px white;border-radius: 10px;margin-left: 1%;margin-top: 2%;display: none;">
                     <span class="userInfo" style="margin-left: 30%">添加管理员</span>
                     <div style="width: 298px;border: solid 0.5px rgba(255,255,255,0.4);"></div>
-                    <form action="">
+                    <form action="admin.do" method="post">
                         <div style="height: 170px;width: 300px;">
-                        <input type="text" name="adminName" style="margin-left: 15%;margin-top: 17%" placeholder="登陆账号"/>
-                        <input type="password" name="adminPwd" style="margin-left: 15%;margin-top: 5%" placeholder="密码"/>
+                            <input type="text" name="adminName" style="margin-left: 15%;margin-top: 17%" placeholder="登陆账号"/>
+                            <input type="password" name="adminPwd" style="margin-left: 15%;margin-top: 5%" placeholder="密码"/>
+                            <input type="hidden" name="method" value="add">
                         </div>
                         <input type="submit" class="btn btn-primary btn-sm" style="margin-left: 15%" value="添加">
-                        <input type="button" class="btn btn-danger btn-sm" style="margin-left: 10%" id="rebackBtn" value="返回上一级">
+                        <input type="button" class="btn btn-danger btn-sm" style="margin-left: 10%" id="rebackBtn" value="返回上级">
                     </form>
                 </div>
 

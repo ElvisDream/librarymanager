@@ -6,6 +6,7 @@ import com.lovo.service.AdminService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by Elivs on 2017/3/17.
@@ -26,7 +27,14 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public void changeAdminType(int adminId) {
-        adminDao.updateAdmintType(adminId);
+    public List<AdminBean> changeAdminType(int adminId) {
+
+        return adminDao.updateAdmintType(adminId);
+    }
+
+    @Override
+    public List<AdminBean> queryAll() {
+
+        return adminDao.selectAll();
     }
 }

@@ -2,6 +2,8 @@ package com.lovo.service;
 
 import com.lovo.pojo.AdminBean;
 
+import java.util.List;
+
 /**
  * Created by Elivs on 2017/3/17.
  */
@@ -24,5 +26,11 @@ public interface AdminService {
      *
      * @param adminId 根据管理员ID修改管理员状态
      */
-    void changeAdminType(int adminId);
+    List<AdminBean> changeAdminType(int adminId);
+
+    /**
+     *
+     * @return 查询所有管理员
+     */
+    List<AdminBean> queryAll();
 }

@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by Elivs on 2017/3/17.
@@ -38,8 +39,23 @@ public class AdminDaoImpl implements AdminDao {
     }
 
     @Override
-    public void updateAdmintType(int adminId) {
+    public List<AdminBean> updateAdmintType(int adminId) {
+
         String sql = "UPDATE admin SET admin_type=FALSE WHERE admin_id=?";
         jdbcTemplate.update(sql, new Object[]{adminId});
+
+        return selectAll();
+    }
+
+    @Override
+    public List<AdminBean> selectAll() {
+
+        String sql = "select * from admin where admin_type!=false and admin_power!='super'";
+
+        RowMapper<AdminBean> maper = new BeanPropertyRowMapper<AdminBean>(AdminBean.class);
+
+        List<AdminBean> adminList = jdbcTemplate.query(sql, maper);
+
+        return adminList;
     }
 }

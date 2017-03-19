@@ -17,13 +17,22 @@
             var adminPwd = $("#adminPwd").val();
             if(adminName == "" || adminPwd == "") {
                 $("#errorMsg").text("用户名或密码不能为空！");
-                $("#errorMsg").fadeIn(1000)
-                $("#errorMsg").fadeOut(1000)
+                $("#errorMsg").fadeIn(1000);
+                $("#errorMsg").fadeOut(1000);
                 return false;
             }else{
                 return true;
             }
         }
+
+        $(function () {
+            $("#adminName").focus(function () {
+                $("#errorMsg").fadeOut(1000);
+            });
+            $("#adminPwd").focus(function () {
+                $("#errorMsg").fadeOut(1000);
+            });
+        });
     </script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/mycss.css">
