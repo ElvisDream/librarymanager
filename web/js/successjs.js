@@ -68,6 +68,8 @@ $(function () {
     $("#rebackBookList").click(function () {
         showBooks("");
     });
+
+    //查询用户信息
     function query(userId,method) {
         $.ajax({
             dataType:"json",
@@ -97,30 +99,36 @@ $(function () {
         $("#changeManagerDiv").show();
     });
 
-
-    function showBooks(bookMethod) {
+    //查询所有书籍列表
+    function showBooks(bookMethod,bookIndex) {
         $.ajax({
             dataType:"json",
             type:"post",
             url:"book.do?method="+bookMethod,
-            data:{userNum:$("#userId").val()},
+            data:{userNum:$("#userId").val(),bookId:bookIndex},
             success:function (result) {
                 $("#bookImgDl").html("");
                 for(var i=0; i<result.length;i++) {
                     var $dt = $("<dt></dt>");
                     $dt.append("<div class='imgDiv' style=\"background: url('/image/"+ result[i].bookImg+"')\">");
                     $dt.append('<input type="hidden" value="'+result[i].bookName+'">');
+                    $dt.append("<input type='hidden' id='bookId' value='"+result[i].bookId+"'/>")
                     $("#bookImgDl").append($dt);
                 }
                 $(".imgDiv").click(function () {
                     if($(this).text()=="√") {
                         num--
                         $(this).text("");
+                        str0 = "&"+$(this).next().next().val();
+                        bookIndex = bookIndex.slice(0, bookIndex.length - str0.length);
                         $("#errorMsg").hide();
                     }else{
                         if(num < 4) {
                             num++;
                             $(this).text("√");
+                            //此处获取到用户借的书的所有ID的字符串拼接
+                            bookIndex += "&"+$(this).next().next().val();
+                            // alert(bookIndex);
                         }else{
                             $("#errorMsg").show();
                         }
@@ -131,10 +139,32 @@ $(function () {
                     $("#errorMsg").hide();
                     $(".imgDiv").text("");
                 });
+                $("#rentBtn").click(function () {
+                    rentBook(bookIndex);
+                });
             }
         });
     }
-    showBooks()
+    showBooks();
+
+    function rentBook(bookIndex) {
+        if($("#userId").val() !="") {
+            showBooks("rent",bookIndex);
+            if(bookIndex != undefined && bookIndex!=NaN) {
+                $("#errorMsg").text("借阅成功！");
+                $("#errorMsg").fadeIn()
+                $("#errorMsg").fadeOut(1000)
+            }else{
+                $("#errorMsg").text("至少先选择一本书！");
+                $("#errorMsg").fadeIn()
+                $("#errorMsg").fadeOut(1000)
+            }
+        }else{
+            alert("请先输入用户ID!")
+        }
+    }
+
+    //删除管理员，并返回其管理员列表
     function getUser(method,adminId) {
         $.ajax({
             dataType:"json",

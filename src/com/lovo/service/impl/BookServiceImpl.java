@@ -27,4 +27,9 @@ public class BookServiceImpl implements BookService {
 
         return bookDao.selectUserBookByNum(userNum);
     }
+
+    @Override
+    public void rentBook(int bookId, int userNum) {
+        bookDao.updateBookById(bookId,userNum);
+    }
 }

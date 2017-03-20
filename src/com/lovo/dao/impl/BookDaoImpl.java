@@ -42,4 +42,10 @@ public class BookDaoImpl implements BookDao {
 
         return books;
     }
+
+    @Override
+    public void updateBookById(int bookId, int userNum) {
+        String sql = "UPDATE book SET book_type = FALSE ,user_id = (select user_id from users where user_num=?) WHERE book_id=?";
+        jdbcTemplate.update(sql, new Object[]{userNum, bookId});
+    }
 }

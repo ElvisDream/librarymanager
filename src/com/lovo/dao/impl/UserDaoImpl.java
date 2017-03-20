@@ -67,4 +67,14 @@ public class UserDaoImpl implements UserDao {
             return null;
         }
     }
+
+    @Override
+    public void userAccount(int bookSize,int userId) {
+        //获取用户余额
+        String sql = "select user_account from users where user_id in (SELECT user_id from users where user_num=?)";
+        int account= jdbcTemplate.queryForObject(sql, new Object[]{userId},Integer.class);
+        //修改用户余额
+        String sql1 = "update users set user_account = ? where user_num=?";
+        jdbcTemplate.update(sql1, new Object[]{(account-bookSize * 2),userId});
+    }
 }

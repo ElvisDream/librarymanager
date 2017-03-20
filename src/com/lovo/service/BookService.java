@@ -21,4 +21,10 @@ public interface BookService {
      * @return 返回用户借出的书籍列表
      */
     List<BookBean> queryByUserNum(int userNum);
+
+    /**
+     *
+     * @param bookId 根据bookid修改书籍状态
+     */
+    void rentBook(int bookId,int userNum);
 }

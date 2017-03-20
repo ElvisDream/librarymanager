@@ -25,4 +25,10 @@ public interface UserDao {
      * @return 返回新增用户对象
      */
     UserBean addUser(UserBean user);
+
+    /**
+     *
+     * @param bookSize 根据书本数量，对用户余额进行修改
+     */
+    void userAccount(int bookSize, int userId);
 }

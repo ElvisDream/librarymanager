@@ -35,4 +35,9 @@ public class UserServiceImpl implements UserServce {
         user.setUserNum(radomInt);
         return userDao.addUser(user);
     }
+
+    @Override
+    public void userAccount(int bookSize, int userId) {
+        userDao.userAccount(bookSize,userId);
+    }
 }

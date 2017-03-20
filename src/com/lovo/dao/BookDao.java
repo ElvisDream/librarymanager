@@ -21,4 +21,10 @@ public interface BookDao {
      */
 
     List<BookBean> selectUserBookByNum(int userNum);
+
+    /**
+     *
+     * @param bookId 根据bookid修改书籍状态
+     */
+    void updateBookById(int bookId,int userNum);
 }

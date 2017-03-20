@@ -63,7 +63,6 @@
                         </div>
                     </div>
                     <button id="addAdminBtn" class="btn btn-primary btn-sm" style="margin-left: 15%">增加管理员</button>
-                    <%--<button id="sureChgBtn" class="btn btn-primary btn-sm" style="margin-left: 2%">确认修改</button>--%>
                     <button id="cancleChgBtn" class="btn btn-danger btn-sm" style="margin-left: 5%">返回上级</button>
 
                 </div>

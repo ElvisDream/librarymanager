@@ -26,4 +26,10 @@ public interface UserServce {
      */
     UserBean addUser(UserBean user);
 
+    /**
+     *
+     * @param bookSize 根据书本数量，对用户余额进行修改
+     */
+    void userAccount(int bookSize, int userId);
+
 }
