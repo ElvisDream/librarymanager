@@ -40,7 +40,7 @@ $(function () {
         if($("#userId").val()!="") {
             query($("#userId").val(),"query");
         }else{
-            alert("请先查询一个用户")
+            alert("请先输入一个用户ID")
         }
     });
     $("#delUser").click(function () {
@@ -80,7 +80,7 @@ $(function () {
                 //此处开始写获取用户信息
                 $("#getUserId").text(result.userNum);
                 $("#userName").text(result.userName);
-                $("#userAccount").text(result.userAccount+"元");
+                $("#userAccount").text(result.userAccount);
                 var userType = result.userType;
                 if(userType == 1) {
                     $("#userType").text("正常")
@@ -130,17 +130,23 @@ $(function () {
                             bookIndex += "&"+$(this).next().next().val();
                             // alert(bookIndex);
                         }else{
+                            $("#errorMsg").text("用户一次最多只能借走4本书!");
                             $("#errorMsg").show();
                         }
                     }
                 });
                 $("#clearBtn").click(function () {
                     num=0;
+                    bookIndex = "";
                     $("#errorMsg").hide();
                     $(".imgDiv").text("");
                 });
                 $("#rentBtn").click(function () {
+
                     rentBook(bookIndex);
+                    bookIndex = "";
+                    $(".imgDiv").text("");
+                    query($("#userId").val(),"query");
                 });
             }
         });
@@ -148,16 +154,27 @@ $(function () {
     showBooks();
 
     function rentBook(bookIndex) {
+
         if($("#userId").val() !="") {
-            showBooks("rent",bookIndex);
-            if(bookIndex != undefined && bookIndex!=NaN) {
-                $("#errorMsg").text("借阅成功！");
-                $("#errorMsg").fadeIn()
-                $("#errorMsg").fadeOut(1000)
+
+            if(bookIndex != undefined) {
+                if($("#userType").text()=="正常") {
+                    var size = bookIndex.split("&").length-1;
+                    if($("#userAccount").text()<size*2) {
+                        alert("余额不足，请先充值!")
+                    }else{
+                        showBooks("rent",bookIndex);
+                        $("#errorMsg").text("借阅成功！");
+                        $("#errorMsg").fadeIn();
+                        $("#errorMsg").fadeOut(1000);
+                    }
+                }else{
+                    alert("该用户已被注销！")
+                }
             }else{
                 $("#errorMsg").text("至少先选择一本书！");
-                $("#errorMsg").fadeIn()
-                $("#errorMsg").fadeOut(1000)
+                $("#errorMsg").fadeIn();
+                $("#errorMsg").fadeOut(1000);
             }
         }else{
             alert("请先输入用户ID!")

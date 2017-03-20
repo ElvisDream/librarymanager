@@ -94,7 +94,7 @@
             <div class="col-md-8 initDiv" style="background: white">
                 <div class="titleDiv">书 籍 一 览</div>
                 <dl style="margin-top: 3%;margin-left: 2%" id="bookImgDl"></dl>
-                <div id="errorMsg" style="width: 500px;color: red;display: none;font-size: 1.5em;margin-left: 5%;clear: both;">用户一次最多只能借走4本书!</div>
+                <div id="errorMsg" style="width: 500px;color: red;display: none;font-size: 1.5em;margin-left: 5%;clear: both;"></div>
             </div>
         </div>
     </div>

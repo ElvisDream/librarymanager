@@ -5,7 +5,7 @@ import com.lovo.pojo.UserBean;
 /**
  * Created by Elivs on 2017/3/17.
  */
-public interface UserServce {
+public interface UserService {
     /**
      *
      *@param userNum 根据用户账户查询用户信息

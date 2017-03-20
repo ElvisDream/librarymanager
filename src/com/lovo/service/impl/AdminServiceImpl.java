@@ -21,7 +21,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public AdminBean queryAdmin(AdminBean adminBean) {
+    public AdminBean login(AdminBean adminBean) {
 
         return adminDao.selectAdmin(adminBean);
     }

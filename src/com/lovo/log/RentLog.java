@@ -1,6 +1,7 @@
 package com.lovo.log;
 
-import com.lovo.dao.AdminLogDao;
+import com.lovo.dao.BookDao;
+import com.lovo.dao.RentLogDao;
 import com.lovo.pojo.AdminBean;
 import org.apache.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -14,19 +15,18 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by Elivs on 2017/3/17.
+ * Created by Elivs on 2017/3/20.
  */
 @Component
 @Aspect
-public class LoginLog {
-
+public class RentLog {
 
     private static Logger logger = Logger.getLogger(LoginLog.class);
 
-    @Resource(name = "adminLogDaoImpl")
-    private AdminLogDao adminLogDao;
+    @Resource(name = "rentLogDaoImpl")
+    private RentLogDao rentLogDao;
 
-    @Pointcut("execution(* com.lovo.service.AdminService.login(..))")
+    @Pointcut("execution(* com.lovo.service.BookService.rentBook(..))")
     public void pointCut(){}
 
     public String getTime() {//获取当前详细日期信息
@@ -35,19 +35,19 @@ public class LoginLog {
         String nowdate = smp.format(now);
         return nowdate;
     }
+
     @Around("pointCut()")
-    public AdminBean userLog(ProceedingJoinPoint pjo) throws Throwable{
+    public void rentLog(ProceedingJoinPoint pjo) throws Throwable {
 
-        AdminBean admin = (AdminBean) pjo.proceed();
-
+        pjo.proceed();
+        int bookId = (int)pjo.getArgs()[0];
+        int userNum = (int) pjo.getArgs()[1];
         String now = getTime();
 
-        String contend = "管理员"+admin.getAdminName()+"在"+getTime()+"登陆";
+        String content = "用户ID：" + userNum + ", 所借书籍ID:" + bookId + ", 借书时间："+now;
 
-        logger.warn(contend);
+        logger.warn(content);
 
-        adminLogDao.addLog(contend,admin.getAdminId());
-
-        return admin;
+//        rentLogDao.addLog(content,num[1]);
     }
 }

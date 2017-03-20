@@ -1,6 +1,5 @@
 package com.lovo.service.impl;
 
-import com.lovo.dao.AdminDao;
 import com.lovo.pojo.AdminBean;
 import com.lovo.service.AdminService;
 import org.junit.Ignore;
@@ -10,8 +9,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Elivs on 2017/3/17.
@@ -35,7 +32,7 @@ public class AdminServiceImplTest {
     public void queryAdmin() throws Exception {
         adminBean.setAdminName("super");
         adminBean.setAdminPwd("123");
-        System.out.println(adminService.queryAdmin(adminBean));
+        System.out.println(adminService.login(adminBean));
     }
     @Ignore
     @Test

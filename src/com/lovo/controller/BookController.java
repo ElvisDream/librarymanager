@@ -2,7 +2,7 @@ package com.lovo.controller;
 
 import com.lovo.pojo.BookBean;
 import com.lovo.service.BookService;
-import com.lovo.service.UserServce;
+import com.lovo.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,8 +21,8 @@ public class BookController {
     @Resource(name="bookServiceImpl")
     private BookService bookService;
 
-    @Resource(name="userServiceImpl")
-    private UserServce userServce;
+    @Resource(name= "userServiceImpl")
+    private UserService userServce;
 
 //查询所有没被借出的书
     @RequestMapping(method = RequestMethod.POST)

@@ -2,7 +2,7 @@ package com.lovo.service.impl;
 
 import com.lovo.dao.UserDao;
 import com.lovo.pojo.UserBean;
-import com.lovo.service.UserServce;
+import com.lovo.service.UserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -12,7 +12,7 @@ import java.util.Random;
  * Created by Elivs on 2017/3/17.
  */
 @Service
-public class UserServiceImpl implements UserServce {
+public class UserServiceImpl implements UserService{
 
     @Resource
     private UserDao userDao;

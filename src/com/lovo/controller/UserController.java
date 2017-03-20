@@ -1,7 +1,7 @@
 package com.lovo.controller;
 
 import com.lovo.pojo.UserBean;
-import com.lovo.service.UserServce;
+import com.lovo.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,7 +17,7 @@ import javax.annotation.Resource;
 public class UserController {
 
     @Resource(name = "userServiceImpl")
-    private UserServce userServce;
+    private UserService userServce;
 
     //查询用户信息
     @RequestMapping(params = "method=query",method = RequestMethod.POST)

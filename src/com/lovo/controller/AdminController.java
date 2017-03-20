@@ -30,7 +30,7 @@ public class AdminController {
     @RequestMapping(params = "method=login",method = RequestMethod.POST)
     public java.lang.String login(AdminBean adminBean, HttpSession session) {
 
-        AdminBean admin = adminService.queryAdmin(adminBean);
+        AdminBean admin = adminService.login(adminBean);
         if(admin != null) {
             if(admin.getAdminType()==false) {
                 session.setAttribute("errorMsg","对不起，您的账户已失效！");

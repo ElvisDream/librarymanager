@@ -20,7 +20,7 @@ public interface AdminService {
      * @param adminBean 根据管理员登陆信息查询管理员
      * @return 返回管理员是否存在
      */
-    AdminBean queryAdmin(AdminBean adminBean);
+    AdminBean login(AdminBean adminBean);
 
     /**
      *
